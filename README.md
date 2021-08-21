@@ -12,10 +12,10 @@ Usage
 This plugin provides the following mappings which allow you to move between
 Vim panes and kitty splits seamlessly.
 
-- `<ctrl-h>` => Left
-- `<ctrl-j>` => Down
-- `<ctrl-k>` => Up
-- `<ctrl-l>` => Right
+- `<ctrl-c>` => Left
+- `<ctrl-t>` => Down
+- `<ctrl-s>` => Up
+- `<ctrl-r>` => Right
 
 If you want to use alternate key mappings, see the [configuration section below](https://github.com/knubie/vim-kitty-navigator#custom-key-bindings).
 
@@ -58,19 +58,19 @@ The `pass_keys.py` kitten is used to intercept keybindings defined in your kitty
 Add the following to your `~/.config/kitty/kitty.conf` file:
 
 ```conf
-map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
-map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
-map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
-map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
+map ctrl+c kitten pass_keys.py neighboring_window bottom ctrl+c
+map ctrl+t kitten pass_keys.py neighboring_window top    ctrl+t
+map ctrl+s kitten pass_keys.py neighboring_window left   ctrl+s
+map ctrl+r kitten pass_keys.py neighboring_window right  ctrl+r
 ```
 
 By default `vim-kitty-navigator` uses the name of the current foreground process to detect when it is in a (neo)vim session or not. If that doesn't work, (or if you want to support applications other than vim) you can supply a fourth optional argument to the `pass_keys.py` call in your `kitty.conf` file to match the process name. 
 
 ```conf
-map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j "^.* - nvim$"
-map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k "^.* - nvim$"
-map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h "^.* - nvim$"
-map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l "^.* - nvim$"
+map ctrl+c kitten pass_keys.py neighboring_window bottom ctrl+c "^.* - nvim$"
+map ctrl+t kitten pass_keys.py neighboring_window top    ctrl+t "^.* - nvim$"
+map ctrl+s kitten pass_keys.py neighboring_window left   ctrl+s "^.* - nvim$"
+map ctrl+r kitten pass_keys.py neighboring_window right  ctrl+r "^.* - nvim$"
 ```
 
 #### Make kitty listen to control messages
