@@ -1,4 +1,4 @@
-" Maps <C-h/j/k/l> to switch vim splits in the given direction. If there are
+" Maps <C-c/t/s/r> to switch vim splits in the given direction. If there are
 " no more windows in that direction, forwards the operation to kitty.
 
 if exists("g:loaded_kitty_navigator") || &cp || v:version < 700
@@ -15,16 +15,16 @@ function! s:VimNavigate(direction)
 endfunction
 
 if !get(g:, 'kitty_navigator_no_mappings', 0)
-  nnoremap <silent> <c-h> :KittyNavigateLeft<cr>
-  nnoremap <silent> <c-j> :KittyNavigateDown<cr>
-  nnoremap <silent> <c-k> :KittyNavigateUp<cr>
-  nnoremap <silent> <c-l> :KittyNavigateRight<cr>
+  nnoremap <silent> <c-c> :KittyNavigateLeft<cr>
+  nnoremap <silent> <c-t> :KittyNavigateDown<cr>
+  nnoremap <silent> <c-s> :KittyNavigateUp<cr>
+  nnoremap <silent> <c-r> :KittyNavigateRight<cr>
 endif
 
-command! KittyNavigateLeft     call s:KittyAwareNavigate('h')
-command! KittyNavigateDown     call s:KittyAwareNavigate('j')
-command! KittyNavigateUp       call s:KittyAwareNavigate('k')
-command! KittyNavigateRight    call s:KittyAwareNavigate('l')
+command! KittyNavigateLeft     call s:KittyAwareNavigate('c')
+command! KittyNavigateDown     call s:KittyAwareNavigate('t')
+command! KittyNavigateUp       call s:KittyAwareNavigate('s')
+command! KittyNavigateRight    call s:KittyAwareNavigate('r')
 
 function! s:KittyCommand(args)
   let cmd = 'kitty @ ' . a:args
@@ -48,10 +48,10 @@ function! s:KittyAwareNavigate(direction)
 
   if kitty_last_pane || at_tab_page_edge
     let mappings = {
-    \   "h": "left",
-    \   "j": "bottom",
-    \   "k": "top",
-    \   "l": "right"
+    \   "c": "left",
+    \   "t": "bottom",
+    \   "s": "top",
+    \   "r": "right"
     \ }
     let args = 'kitten neighboring_window.py' . ' ' . mappings[a:direction]
     silent call s:KittyCommand(args)
