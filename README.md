@@ -31,7 +31,7 @@ install the plugin:
 Add the following line to your `~/.vimrc` file
 
 ``` vim
-Plug 'knubie/vim-kitty-navigator'
+Plug 'Ryu1845/vim-kitty-navigator'
 ```
 
 Then run
